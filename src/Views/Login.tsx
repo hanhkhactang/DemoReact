@@ -53,14 +53,14 @@ const Login: FC<LoginProp> = (): ReactElement => {
                     label={t("username")}
                     type="text"
                     autoComplete="off"
-                    placeholder={t("etUserName")}
+                    placeholder={t("UserName")}
                   />
                   <Input
                     inputRef={passwordRef}
                     id="txtPassword"
                     label={t("password")}
                     type="password"
-                    placeholder={t("etPassword")}
+                    placeholder={t("Password")}
                   />
 
                   <div className="row">

@@ -93,6 +93,7 @@ const Card = () => {
   };
   console.log(u);
   let y = false;
+  let a = 0;
   return (
     <div className="container">
       <h1 className="text-center text-primary mt-5">{"welcome"} </h1>
@@ -112,16 +113,16 @@ const Card = () => {
                   <>
                     <article className="book" key={item.id}>
                       {" "}
-                      <span className="number">#1</span>
+                      <span className="number">#{(a += 1)}</span>
                       {bookes.map((b, index) => (
                         <>
                           {b.id === item.bookId ? (
                             <>
-                              {(total = total + b.price * item.quantity)}
                               <img src={b.image} alt={b.name} />
                               <h2>{b.name}</h2>
                               <h4>{b.author}</h4>
                               <h4>{b.price} VND</h4>
+                              {(total = total + b.price * item.quantity)}
                             </>
                           ) : (
                             ""
@@ -141,7 +142,9 @@ const Card = () => {
                                   <i className="bi bi-chevron-left  " />
                                 </a>
 
-                                <h4 className="col">{item.quantity}</h4>
+                                <h4 className="col">
+                                  Số Lượng:{item.quantity}
+                                </h4>
                                 <a
                                   className="col"
                                   href="/#"

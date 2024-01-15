@@ -4,13 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
+const auth = getAuth();
+const user = auth.currentUser;
+let a = user?.email;
 const Header = () => {
   const dispatch = useDispatch();
   // const dispatch = useDispatch();
   const navigate = useNavigate();
   const loout = (e: any) => {
     e.preventDefault();
-    const auth = getAuth();
+
     auth.signOut().then(() => {
       localStorage.removeItem("userInfo");
       navigate("/login");
@@ -63,12 +66,13 @@ const Header = () => {
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink className="nav-link " to="/#">
-                4444444444444444
+              <NavLink className="nav-link " to="/card">
+                Welcome {a}
+                <i className="bi-cart text-bg-danger " />
               </NavLink>
             </li>
             <li className="nav-item" onClick={loout}>
-              <a className="nav-link" href="\#">
+              <a className="nav-link" href="\">
                 <i className="bi-box-arrow-right" />
               </a>
             </li>

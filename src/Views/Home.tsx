@@ -27,8 +27,6 @@ export interface IBook {
 }
 const Home = () => {
   const [bookes, setBookes] = React.useState<IBook[]>([]);
-  const Navigate = useNavigate();
-  const [card, setCard] = React.useState<ICard[]>([]);
   const navigate = useNavigate();
   const auth = getAuth();
   const user = auth.currentUser;
@@ -46,6 +44,7 @@ const Home = () => {
       setBookes(data);
     });
   };
+  let w = 0;
   const addToCart = (e: any, ids: string) => {
     e.preventDefault();
     const c = query(collection(firestoreDb, "Card"), orderBy("quantity"));
@@ -99,7 +98,7 @@ const Home = () => {
           <article className="book-list">
             {bookes.map((item, index) => (
               <article className="book" key={item.id}>
-                <span className="number">#1</span>
+                <span className="number">#{(w += 1)}</span>
                 <img src={item.image} alt={item.name} />
                 <h2>{item.name}</h2>
                 <h4>{item.author}</h4>
