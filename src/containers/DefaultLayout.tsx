@@ -9,6 +9,7 @@ import Login from "../Views/Login";
 import Header from "./Header";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
+import Card from "../Views/Card";
 // import MajorEdit from "../views/MajorEdit";
 let issig = 0;
 const DefaultLayout = () => {
@@ -25,6 +26,19 @@ const DefaultLayout = () => {
             <Route path="/userpage" element={<Userpage />} />
             <Route path="/bookedit" element={<BookEdit />} />
           </Routes>
+          {user?.uid === "bkoVUj2Iy8eNGUu6vtB6kfMpO492" ? (
+            <>
+              <Routes>
+                <Route path="/card" element={<Card />} />
+              </Routes>
+            </>
+          ) : (
+            <>
+              <Routes>
+                <Route path="/card" element={<Home />} />
+              </Routes>
+            </>
+          )}
         </>
       ) : (
         <>
