@@ -15,6 +15,7 @@ import {
 import Input from "../components/Input";
 import CustomButton from "../components/CustomButton";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { ICategory } from "./Category";
 import { error } from "console";
 
@@ -52,6 +53,7 @@ const CategoryEdit = () => {
       addDoc(collection(firestoreDb, "categories"), data).then(
         (docRef) => {
           navigate("/category");
+          toast.success("Add successfully");
         },
         (error) => setMessage(error.message)
       );
@@ -59,6 +61,7 @@ const CategoryEdit = () => {
       setDoc(doc(firestoreDb, "categories", category.id), data).then(
         (docRef) => {
           navigate("/category");
+          toast.success("Update successfully");
         },
         (error) => setMessage(error.message)
       );

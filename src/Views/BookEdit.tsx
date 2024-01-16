@@ -19,6 +19,7 @@ import CustomButton from "../components/CustomButton";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { IBook } from "./Book";
 import { ICategory } from "./Category";
+import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import Select from "../components/Select";
 
@@ -76,6 +77,7 @@ const BookEdit = () => {
       addDoc(collection(firestoreDb, "book"), data).then(
         (docRef) => {
           navigate("/book");
+          toast.success("Add successfully");
         },
         (error) => setMessage(error.message)
       );
@@ -83,6 +85,7 @@ const BookEdit = () => {
       setDoc(doc(firestoreDb, "book", book.id), data).then(
         (docRef) => {
           navigate("/book");
+          toast.success("Update successfully");
         },
         (error) => setMessage(error.message)
       );

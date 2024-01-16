@@ -41,6 +41,7 @@ const Category = () => {
   const handleDelete = (e: any, id: string) => {
     e.preventDefault();
     deleteDoc(doc(firestoreDb, "categories", id)).then(() => loadData());
+    toast.warning("Delete successfully");
   };
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Card, Col, Container, Row, Table } from "react-bootstrap";
 import CustomButton from "../components/CustomButton";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import {
   collection,
@@ -39,6 +40,7 @@ const Book = () => {
   const handleDelete = (e: any, id: string) => {
     e.preventDefault();
     deleteDoc(doc(firestoreDb, "book", id)).then(() => loadData());
+    toast.warning("Delete successfully");
   };
 
   useEffect(() => {

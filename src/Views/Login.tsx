@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, useEffect, useState } from "react";
 import Input from "../components/Input";
+import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -41,7 +42,7 @@ const Login: FC<LoginProp> = (): ReactElement => {
             <div className="card bg-primary">
               <div className="card-header text-white">
                 <h4 className="card-title mb-0">
-                  <i className="bi-grid-3x3-gap-fill" /> {t("loginSistem")}
+                  <i className="bi-grid-3x3-gap-fill" /> {t("loginSystem")}
                 </h4>
               </div>
               <div className="card-body bg-white rounded-bottom">
