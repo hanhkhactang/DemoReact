@@ -12,6 +12,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { firestoreDb } from "../firebase-config";
+import { toast } from "react-toastify";
 import { getAuth } from "firebase/auth";
 import { IBook } from "./Home";
 export interface ICard {
@@ -55,7 +56,10 @@ const Card = () => {
   };
   const deletehandle = (e: any, id: string) => {
     e.preventDefault();
-    deleteDoc(doc(firestoreDb, "Card", id)).then(() => loadData());
+    deleteDoc(doc(firestoreDb, "Card", id)).then(() => {
+      toast.warning("No avatar to download!");
+      loadData();
+    });
   };
   const handleAdd = (e: any, id: string, quantity: number) => {
     e.preventDefault();
@@ -69,6 +73,7 @@ const Card = () => {
       updateDoc(docRef, data).then((docRef) => {
         console.log("Value of an Existing Document Field has been updated");
         loadData();
+        toast.success("Add the number of successes");
         navigate("/card");
       });
     });
@@ -86,13 +91,14 @@ const Card = () => {
         updateDoc(docRef, data).then((docRef) => {
           console.log("Value of an Existing Document Field has been updated");
           loadData();
+          toast.success("Reduce the number of successes");
           navigate("/card");
         });
       });
     } else deletehandle(e, id);
   };
   console.log(u);
-  let y = false;
+  let y = true;
   let a = 0;
   return (
     <div className="container">
@@ -118,18 +124,14 @@ const Card = () => {
                         <>
                           {b.id === item.bookId ? (
                             <>
+                              <div className="d-none">
+                                {(total = total + b.price * item.quantity)}
+                              </div>
+                              {y === false}
                               <img src={b.image} alt={b.name} />
                               <h2>{b.name}</h2>
                               <h4>{b.author}</h4>
                               <h4>{b.price} VND</h4>
-                              {(total = total + b.price * item.quantity)}
-                            </>
-                          ) : (
-                            ""
-                          )}
-                          {y === false ? (
-                            <>
-                              {(y = true)}
                               <div className="row">
                                 <a
                                   className="col"

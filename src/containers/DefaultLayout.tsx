@@ -10,6 +10,10 @@ import Header from "./Header";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import Card from "../Views/Card";
+import Book from "../Views/Book";
+import Category from "../Views/Category";
+import CategoryEdit from "../Views/CategoryEdit";
+import NoPermission from "../Views/NoPermission";
 // import MajorEdit from "../views/MajorEdit";
 let issig = 0;
 const DefaultLayout = () => {
@@ -30,12 +34,20 @@ const DefaultLayout = () => {
             <>
               <Routes>
                 <Route path="/card" element={<Card />} />
+                <Route path="/book" element={<NoPermission />} />
+                <Route path="/category" element={<NoPermission />} />
+                <Route path="/category-edit/:id" element={<NoPermission />} />
+                <Route path="/book-edit/:id" element={<NoPermission />} />
               </Routes>
             </>
           ) : (
             <>
               <Routes>
                 <Route path="/card" element={<Home />} />
+                <Route path="/book" element={<Book />} />
+                <Route path="/category" element={<Category />} />
+                <Route path="/category-edit/:id" element={<CategoryEdit />} />
+                <Route path="/book-edit/:id" element={<BookEdit />} />
               </Routes>
             </>
           )}

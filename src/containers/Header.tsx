@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getAuth } from "firebase/auth";
+import { Nav } from "react-bootstrap";
 const auth = getAuth();
 const user = auth.currentUser;
 let a = user?.email;
 const Header = () => {
   const dispatch = useDispatch();
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const loout = (e: any) => {
     e.preventDefault();
@@ -25,9 +25,10 @@ const Header = () => {
       <div className="container">
         <Link className="nacbar-brand " to="/">
           <img
-            src={process.env.PUBLIC_URL + "/graduate.png"}
+            src={process.env.PUBLIC_URL + "/img/book.png"}
             alt="logo"
             style={{ height: "25px" }}
+            className="me-1"
           />
           <a className="navbar-brand" href="/">
             Book sell
@@ -53,10 +54,13 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link " to="/instructors">
-                2222222222222
-              </NavLink>
+              <Nav.Link as={NavLink} to="/category">
+                Category
+              </Nav.Link>
             </li>
+            <Nav.Link as={NavLink} to="/book">
+              Book
+            </Nav.Link>
 
             <li className="nav-item">
               <NavLink className="nav-link" to="/card">

@@ -14,7 +14,9 @@ import {
 import { firestoreDb } from "./../firebase-config";
 import { ICard } from "./Card";
 import { getAuth } from "firebase/auth";
-import CustomButton from "../component/CustomButton";
+import CustomButton from "../components/CustomButton";
+import { toast } from "react-toastify";
+import { Toast } from "react-bootstrap";
 export interface IBook {
   id: string;
   code: string;
@@ -67,6 +69,7 @@ const Home = () => {
               console.log(
                 "Value of an Existing Document Field has been updated"
               );
+              toast.success("Add quantity successfully");
               navigate("/card");
             });
           });
@@ -80,6 +83,7 @@ const Home = () => {
           bookId: b,
           quantity: 1,
         });
+        toast.success("Add to cart successfully");
         navigate("/card");
       }
     });
@@ -115,60 +119,6 @@ const Home = () => {
                 </CustomButton>
               </article>
             ))}
-            <article className="book">
-              <span className="number">#1</span>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/716vTsk5TSL._AC_UL600_SR600,400_.jpg"
-                alt="A Thousand Brains"
-              />
-              <h2>A Thousand Brains</h2>
-              <h4>Jeff Hawkins</h4>
-            </article>
-            <article className="book">
-              <span className="number">#2</span>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/716vTsk5TSL._AC_UL600_SR600,400_.jpg"
-                alt="Tracers in the Dark"
-              />
-              <h2>Tracers in the Dark</h2>
-              <h4>Andy Greenberg</h4>
-            </article>
-            <article className="book">
-              <span className="number">#3</span>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/716vTsk5TSL._AC_UL600_SR600,400_.jpg"
-                alt="Chip War"
-              />
-              <h2>Chip War</h2>
-              <h4>Chris Miller</h4>
-            </article>
-            <article className="book">
-              <span className="number">#4</span>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/716vTsk5TSL._AC_UL600_SR600,400_.jpg"
-                alt="Atomic Habits"
-              />
-              <h2>Atomic Habits</h2>
-              <h4>James Clear</h4>
-            </article>
-            <article className="book">
-              <span className="number">#5</span>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/716vTsk5TSL._AC_UL600_SR600,400_.jpg"
-                alt="The Creative Act: A Way of Being "
-              />
-              <h2>The Creative Act: A Way of Being </h2>
-              <h4>Rick Rubin</h4>
-            </article>
-            <article className="book">
-              <span className="number">#6</span>
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/716vTsk5TSL._AC_UL600_SR600,400_.jpg"
-                alt="It Starts with Us: A Novel"
-              />
-              <h2>It Starts with Us: A Novel</h2>
-              <h4>Colleen Hoover</h4>
-            </article>
           </article>
           <section className="bottom">
             <h5 className="bottom-title">
