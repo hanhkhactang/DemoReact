@@ -57,7 +57,7 @@ const Card = () => {
   const deletehandle = (e: any, id: string) => {
     e.preventDefault();
     deleteDoc(doc(firestoreDb, "Card", id)).then(() => {
-      toast.warning("No avatar to download!");
+      toast.warning("Remove successes!");
       loadData();
     });
   };

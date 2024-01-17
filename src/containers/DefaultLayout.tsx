@@ -33,21 +33,21 @@ const DefaultLayout = () => {
           {user?.uid === "bkoVUj2Iy8eNGUu6vtB6kfMpO492" ? (
             <>
               <Routes>
-                <Route path="/card" element={<Card />} />
-                <Route path="/book" element={<NoPermission />} />
-                <Route path="/category" element={<NoPermission />} />
-                <Route path="/category-edit/:id" element={<NoPermission />} />
-                <Route path="/book-edit/:id" element={<NoPermission />} />
-              </Routes>
-            </>
-          ) : (
-            <>
-              <Routes>
                 <Route path="/card" element={<Home />} />
                 <Route path="/book" element={<Book />} />
                 <Route path="/category" element={<Category />} />
                 <Route path="/category-edit/:id" element={<CategoryEdit />} />
                 <Route path="/book-edit/:id" element={<BookEdit />} />
+              </Routes>
+            </>
+          ) : (
+            <>
+              <Routes>
+                <Route path="/card" element={<Card />} />
+                <Route path="/book" element={<NoPermission />} />
+                <Route path="/category" element={<NoPermission />} />
+                <Route path="/category-edit/:id" element={<NoPermission />} />
+                <Route path="/book-edit/:id" element={<NoPermission />} />
               </Routes>
             </>
           )}
